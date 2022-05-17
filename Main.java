@@ -3,7 +3,7 @@ public class Main {
 
 
         testPartA();
-        //testPartB();
+        testPartB();
     }
 
     private static void testPartA() {
@@ -40,7 +40,7 @@ public class Main {
         System.out.println("o2: " + o2);
         System.out.println("new: " + new AccurateClock(5, 6, 3));
     }
-/*
+
     private static void testPartB() {
         System.out.println("--------------- Tests for part B ---------------");
 
@@ -137,7 +137,7 @@ public class Main {
                                                         new DoubleLiteral(2.17),
                                                         new Subtraction(divisionExp, exp3)))))));
         printExpression(massiveExp, "massiveExp");
-
+/*
         ExpressionParser polishParser = new PolishNotationParser();
         ExpressionParser reversePolishParser = new ReversePolishNotationParser();
 
@@ -170,6 +170,8 @@ public class Main {
 
         Addition exp4 = new Addition(exp3, parsed6);
         printExpression(exp4, "exp4");
+
+ */
     }
 
     private static void printExpression(Expression exp, String name, boolean withClass) {
@@ -187,6 +189,6 @@ public class Main {
         printExpression(exp, name, false);
     }
 
-*/
+
 }
 
