@@ -16,57 +16,33 @@ public class PolishNotationParser {
                 return new IntegerLiteral(Integer.parseInt(arr[0]));
             }
         }
-        else if(arr.length == 2) {
-            if (isDouble(arr[0])) {
-                return new UnaryMinus(new DoubleLiteral(Double.parseDouble(arr[1])));
-            } else {
-                return new UnaryMinus(new IntegerLiteral(Integer.parseInt(arr[1])));
-            }
+        else if(arr[0].equals("u-"))
+        {
+            return new UnaryMinus(parse(s.substring(1)));
         }
-        if(arr[0].charAt(0) == '+'){
-            if((isNumber(arr[-3])||(arr[-3] == "-u"))&&((isNumber(arr[-1]))&&(isNumber(arr[-2])))) {
-                if (isDouble(arr[-1])) {
-                    return new Addition(parse(s.substring(1, s.length() - arr[-1].length()))
-                            , new DoubleLiteral(Double.parseDouble(arr[0])));
-                } else {
-                    return new Addition(parse(s.substring(1, s.length() - arr[-1].length()))
-                            , new IntegerLiteral(Integer.parseInt(arr[0])));
-                }
+
+        if(arr[0].equals("+")){
+            int index = Find_Separation(s);
+
+            return new Addition(parse(s.substring(1, index + 1)),parse(s.substring(index + 1)));
             }
-            else if(arr[-3] == "+"){
-                return new Addition()
-            }
+
+        else if(arr[0].equals("*")){
+            int index = Find_Separation(s);
+
+            return new Multiplication(parse(s.substring(1, index + 1)),parse(s.substring(index + 1)));
         }
-        else if(arr[0].charAt(0) == '*'){
-            if(isDouble(arr[-1])) {
-                return new Multiplication(parse(s.substring(1,s.length() - arr[-1].length()))
-                        ,new DoubleLiteral(Double.parseDouble(arr[0])));
-            }
-            else{
-                return new Multiplication(parse(s.substring(1,s.length() - arr[-1].length()))
-                        ,new IntegerLiteral(Integer.parseInt(arr[0])));
-            }
+        else if(arr[0].equals("-")){
+            int index = Find_Separation(s);
+
+            return new Subtraction(parse(s.substring(1, index + 1)),parse(s.substring(index + 1)));
         }
-        else if(arr[0].charAt(0) == '-'){
-            if(isDouble(arr[-1])) {
-                return new Subtraction(parse(s.substring(1,s.length() - arr[-1].length()))
-                        ,new DoubleLiteral(Double.parseDouble(arr[0])));
-            }
-            else{
-                return new Subtraction(parse(s.substring(1,s.length() - arr[-1].length()))
-                        ,new IntegerLiteral(Integer.parseInt(arr[0])));
-            }
+        else {
+            int index = Find_Separation(s);
+
+            return new Division(parse(s.substring(1, index + 1)),parse(s.substring(index + 1)));
         }
-        else if(arr[0].charAt(0) == '/'){
-            if(isDouble(arr[-1])) {
-                return new Division(parse(s.substring(1,s.length() - arr[-1].length()))
-                        ,new DoubleLiteral(Double.parseDouble(arr[0])));
-            }
-            else{
-                return new Division(parse(s.substring(1,s.length() - arr[-1].length()))
-                        ,new IntegerLiteral(Integer.parseInt(arr[0])));
-            }
-        }
+
     }
 
     public boolean isDouble(String s)
@@ -85,5 +61,48 @@ public class PolishNotationParser {
         }
         return false;
     }
+
+
+    public int Find_Separation(String s)
+    {
+        String[] string_array = s.split(" ");
+        int op_count = 0;
+        int num_count = 0;
+        int i = 1;
+
+        while(num_count <= op_count)
+        {
+            if (isNumber(string_array[i])) num_count++;
+            else op_count++;
+            i++;
+        }
+        return i-1;
+    }
+
+    public String ret_str1(String[] arr_s , int index)
+    {
+        String[] arr_ret = new String[index];
+        for (int i = 1 ; i <= index ; i++)
+        {
+            arr_ret[i] = arr_s[i];
+        }
+        String ret_s = String.join(" " , arr_ret);
+        return ret_s;
+    }
+
+    public String ret_str2(String[] arr_s , int index)
+    {
+        String[] arr_ret = new String[index];
+        for (int i = index+1 ; i < arr_s.length ; i++)
+        {
+            arr_ret[i-index-1] = arr_s[i];
+        }
+        String ret_s = String.join(" " , arr_ret);
+        return ret_s;
+    }
+
+
+
+
 
 }
