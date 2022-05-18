@@ -1,4 +1,4 @@
-public class PolishNotationParser {
+public class PolishNotationParser extends ExpressionParser {
 
 
     public PolishNotationParser(){
@@ -16,31 +16,31 @@ public class PolishNotationParser {
                 return new IntegerLiteral(Integer.parseInt(arr[0]));
             }
         }
-        else if(arr[0].equals("u-"))
+        else if(arr[0].equals("-u"))
         {
-            return new UnaryMinus(parse(s.substring(1)));
+            return new UnaryMinus(parse(s.substring(3)));
         }
 
         if(arr[0].equals("+")){
             int index = Find_Separation(s);
 
-            return new Addition(parse(s.substring(1, index + 1)),parse(s.substring(index + 1)));
+            return new Addition(parse(ret_str1(arr,index)),parse(ret_str2(arr,index)));
             }
 
         else if(arr[0].equals("*")){
             int index = Find_Separation(s);
 
-            return new Multiplication(parse(s.substring(1, index + 1)),parse(s.substring(index + 1)));
+            return new Multiplication(parse(ret_str1(arr,index)),parse(ret_str2(arr,index)));
         }
         else if(arr[0].equals("-")){
             int index = Find_Separation(s);
 
-            return new Subtraction(parse(s.substring(1, index + 1)),parse(s.substring(index + 1)));
+            return new Subtraction(parse(ret_str1(arr,index)),parse(ret_str2(arr,index)));
         }
         else {
             int index = Find_Separation(s);
 
-            return new Division(parse(s.substring(1, index + 1)),parse(s.substring(index + 1)));
+            return new Division(parse(ret_str1(arr,index)),parse(ret_str2(arr,index)));
         }
 
     }
@@ -84,7 +84,7 @@ public class PolishNotationParser {
         String[] arr_ret = new String[index];
         for (int i = 1 ; i <= index ; i++)
         {
-            arr_ret[i] = arr_s[i];
+            arr_ret[i-1] = arr_s[i];
         }
         String ret_s = String.join(" " , arr_ret);
         return ret_s;
@@ -92,7 +92,7 @@ public class PolishNotationParser {
 
     public String ret_str2(String[] arr_s , int index)
     {
-        String[] arr_ret = new String[index];
+        String[] arr_ret = new String[arr_s.length-index-1];
         for (int i = index+1 ; i < arr_s.length ; i++)
         {
             arr_ret[i-index-1] = arr_s[i];

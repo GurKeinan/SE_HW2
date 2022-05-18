@@ -43,7 +43,7 @@ public class Main {
 
     private static void testPartB() {
         System.out.println("--------------- Tests for part B ---------------");
-
+        
         Expression intExp1 = new IntegerLiteral(5);
         printExpression(intExp1, "intExp1");
 
@@ -137,15 +137,15 @@ public class Main {
                                                         new DoubleLiteral(2.17),
                                                         new Subtraction(divisionExp, exp3)))))));
         printExpression(massiveExp, "massiveExp");
-/*
+
         ExpressionParser polishParser = new PolishNotationParser();
-        ExpressionParser reversePolishParser = new ReversePolishNotationParser();
+        //ExpressionParser reversePolishParser = new ReversePolishNotationParser();
 
         Expression parsed1 = polishParser.parse("1.5");
         printExpression(parsed1, "parsed1", true);
 
-        Expression parsed2 = reversePolishParser.parse("1");
-        printExpression(parsed2, "parsed2", true);
+        //Expression parsed2 = reversePolishParser.parse("1");
+        //printExpression(parsed2, "parsed2", true);
 
         Expression parsed3 = polishParser.parse("1.0");
         printExpression(parsed3, "parsed3", true);
@@ -153,17 +153,17 @@ public class Main {
         Expression parsed4 = polishParser.parse("+ 1 2");
         printExpression(parsed4, "parsed4", true);
 
-        Expression parsed5 = reversePolishParser.parse("1 2 +");
-        printExpression(parsed5, "parsed5", true);
+        //Expression parsed5 = reversePolishParser.parse("1 2 +");
+        //printExpression(parsed5, "parsed5", true);
 
         Expression parsed6 = polishParser.parse("* + 1.0 2 + 3.0 4");
         printExpression(parsed6, "parsed6", true);
 
-        Expression parsed7 = reversePolishParser.parse("1 2.0 + 3 4.0 + *");
-        printExpression(parsed7, "parsed7", true);
+        //Expression parsed7 = reversePolishParser.parse("1 2.0 + 3 4.0 + *");
+        //printExpression(parsed7, "parsed7", true);
 
-        Expression parsed8 = reversePolishParser.parse("1 2.0 -u + 3 4.0 + * -u");
-        printExpression(parsed8, "parsed8", true);
+        //Expression parsed8 = reversePolishParser.parse("1 2.0 -u + 3 4.0 + * -u");
+        //printExpression(parsed8, "parsed8", true);
 
         Expression parsed9 = polishParser.parse("-u -u -u * + 1.0 2 + 3.0 -u 4");
         printExpression(parsed9, "parsed9", true);
@@ -171,7 +171,7 @@ public class Main {
         Addition exp4 = new Addition(exp3, parsed6);
         printExpression(exp4, "exp4");
 
- */
+
     }
 
     private static void printExpression(Expression exp, String name, boolean withClass) {

@@ -8,11 +8,17 @@ public class RoundedExpression extends Expression{
         this.round = round;
     }
 
-    public double evaluate(){
-        return exp.evaluate() - exp.evaluate() % Math.pow(0.1, this.round);
-    }
+
 
     public String toString(){
         return "(" + exp.toString() + ")";
+    }
+
+    public double evaluate(){
+        double temp1 = this.exp.evaluate() ;
+        double temp2 = temp1 * Math.pow(10 , round);
+        double temp3 = Math.round(temp2);
+        double temp4 = temp3/Math.pow(10 , round);
+        return temp4;
     }
 }
