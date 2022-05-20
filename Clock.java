@@ -6,12 +6,24 @@ class Clock {
     final int legnth_of_toString_AcClock= 8;
 
 
-
+    /**
+     * constructor of new clock
+     * @param hour- the hour on the clock
+     * @param minute- the minute on the clock
+     */
     public Clock(int hour, int minute) {
         this.hour = hour;
         this.minute = minute;
     }
 
+    /**
+     * comparing this to other clock according to the asked method-
+     * the hours and minutes on the 2 clocks should be identical
+     * first we check if the given object is clock, llater we overrule AccurateClock by comparing the lengths of the to
+     * strings- clock-5 , AccurateClock- 7
+     * @param object- comparing this to object
+     * @return true if equals or false otherwise
+     */
     @Override
     public boolean equals(Object object)
     {
@@ -25,7 +37,10 @@ class Clock {
 
     }
 
-
+    /**
+     * hashcode for clock
+     * @return number of minutes after midnight
+     */
     @Override
     public int hashCode()
     {
@@ -34,7 +49,10 @@ class Clock {
 
     }
 
-
+    /**
+     * toString for clock
+     * @return string in format HH:MM when the hours represented in HH and the minutes in MM
+     */
     @Override
     public String toString()
     {
@@ -42,11 +60,18 @@ class Clock {
 
     }
 
-
+    /**
+     * get method for hour
+     * @return this' hour
+     */
     public int getHour() {
         return hour;
     }
 
+    /**
+     * get method for minutes
+     * @return this' minutes
+     */
     public int getMinute() {
         return minute;
     }
@@ -61,16 +86,33 @@ class Clock {
 class AccurateClock extends Clock {
     private int seconds;
 
+    /**
+     * constructor for AccurateClock
+     * @param hour- the new clock's hour
+     * @param minute- the new clock's minutes
+     * @param seconds- the new clock's seconds
+     */
     public AccurateClock(int hour, int minute, int seconds) {
         super(hour, minute);
         this.seconds = seconds;
 
     }
 
+    /**
+     * get method for seconds
+     * @return this' seconds
+     */
     public int getSeconds() {
         return seconds;
     }
 
+    /**
+     * comparing this to other AccurateClock according to the asked method-
+     * the hours, minutes and seconds on the 2 clocks should be identical
+     * first we check if the given object is AccurteClock
+     * @param object- comparing this to object
+     * @return true if equals or false otherwise
+     */
     @Override
     public boolean equals(Object object)
     {
@@ -85,7 +127,10 @@ class AccurateClock extends Clock {
 
     }
 
-
+    /**
+     * hashcode for AccurateClock
+     * @return the number of seconds after midnight
+     */
     @Override
     public int hashCode()
     {
@@ -94,6 +139,10 @@ class AccurateClock extends Clock {
     }
 
 
+    /**
+     * toString for AccurateClock
+     * @return string in HH:MM:SS format where the HH represent hours, MM minutes and SS seconds
+     */
     @Override
     public String toString()
     {

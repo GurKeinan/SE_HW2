@@ -43,7 +43,7 @@ public class Main {
 
     private static void testPartB() {
         System.out.println("--------------- Tests for part B ---------------");
-        
+
         Expression intExp1 = new IntegerLiteral(5);
         printExpression(intExp1, "intExp1");
 
