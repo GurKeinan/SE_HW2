@@ -13,7 +13,6 @@ public class MultiMultiplication extends Expression{
         {
             exp[i] = expression[i];
         }
-
     }
 
     /**
@@ -21,12 +20,12 @@ public class MultiMultiplication extends Expression{
      * @return the multiplication of exp- all of the given expressions
      */
     public double evaluate() {
-        int sum = 0;
+        int product = 1;
         for(int i = 0; i < this.length; i++)
         {
-            sum *= exp[i].evaluate();
+            product *= exp[i].evaluate();
         }
-        return sum;
+        return product;
     }
 
     /**
