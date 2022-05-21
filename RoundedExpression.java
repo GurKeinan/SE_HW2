@@ -19,7 +19,7 @@ public class RoundedExpression extends Expression{
      * @return string in format "(exp1)" when exp1 is the toString of exp
      */
     public String toString(){
-        return "(" + exp.toString() + ")";
+        return exp.toString();
     }
 
     /**

@@ -21,7 +21,7 @@ public class MultiMultiplication extends Expression{
      * @return the multiplication of exp- all of the given expressions
      */
     public double evaluate() {
-        int sum = 0;
+        int sum = 1;
         for(int i = 0; i < this.length; i++)
         {
             sum *= exp[i].evaluate();
