@@ -1,19 +1,20 @@
 public class MultiAddition extends Expression{
     private Expression exp[];
-    int length;
+    private int length;
 
     /**
      * constructor for new MultiAddition
      * @param expression- array of expression we want to sum
      */
-    public MultiAddition(Expression ...expression){
-        this.length = expression.length;
+    public MultiAddition(Expression expression1, Expression expression2, Expression...expression){
+        this.length = expression.length + 2;
         exp = new Expression[this.length];
-        for(int i = 0; i < this.length; i++)
+        exp[0] = expression1;
+        exp[1] = expression2;
+        for(int i = 0; i < this.length - 2; i++)
         {
-            exp[i] = expression[i];
+            exp[i + 2] = expression[i];
         }
-
     }
 
     /**
